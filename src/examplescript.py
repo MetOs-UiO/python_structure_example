@@ -11,32 +11,32 @@ warnings.simplefilter("ignore")
 # needed for betzy
 os.environ["HDF5_USE_FILE_LOCKING"] = "FALSE"
 
+DATA_FOLDER = "data"
 NEG_LON2_POS_LON = 360.0  # xarray doesnt understand negative longitude values
 SECONDS_IN_YEAR = 365.0 * 24.0 * 60.0 * 60.0
-DATA_FOLDER = "data"
 
 
 def icecore_info(project_root):
     # ICE CORE = UPPER FREEMONT GLACIER
     obs = pd.read_csv(f"{project_root}/{DATA_FOLDER}/Upper_freemont_glacier.csv")
 
-    iceyear = obs["Mid_Year"][::-1]
-    icedata = obs["BC_ng/g"][::-1].to_numpy()
-
     icelat = obs["lat"].iloc[0]
     icelon = obs["lon"].iloc[0] + NEG_LON2_POS_LON
+
+    iceyear = obs["Mid_Year"][::-1]
+    icedata = obs["BC_ng/g"][::-1].to_numpy()
 
     return icedata, iceyear, icelat, icelon
 
 
-def extract_relevant_data(project_root, var):
+def extract_relevant_data(project_root, variable):
     # This function finds the model data based on path and variable and concatenates
     # it together if needed, then returns one dataarray with the sorted timeseries of the desired variable
     # ----------------------------------
 
     list_of_data = []
-    for file in glob.glob(f"{project_root}/{DATA_FOLDER}/{var}*.nc"):
-        opendata = xr.open_dataset(file)[var]
+    for file in glob.glob(f"{project_root}/{DATA_FOLDER}/{variable}*.nc"):
+        opendata = xr.open_dataset(file)[variable]
         list_of_data.append(opendata)
 
     if len(list_of_data) > 1:
