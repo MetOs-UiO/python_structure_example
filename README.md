@@ -13,11 +13,10 @@ import xarray as xr
 ```
 
 ## Usage
-If cloning this repository you need to change the path from
+It is expected that you run the code distributed in this project from the `project_root` folder (where you find this file): 
 ```python
 $[~/PROJECT_ROOT] python src/example.py 
 ```
-in line 61 of the script "examplescript.py" to the path where you store the *.nc and *.csv files from this repository. 
 
 "examplescript.py" contains functions which is called in the end of the script
 ```python
@@ -25,7 +24,7 @@ ice_conc, iceyear, icelat, icelon = icecore_info()
 model_conc = make_concentration(icelat,icelon)
 print(ice_conc,model_conc)
 ```
-The concentrations are currently just printed, but plotting them together is encouraged for comparing model concentration of black carbon to what is measured in an ice core
+The concentrations are currently just printed, but plotting them together is encouraged for comparing model concentration of black carbon to what is measured in an ice core.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
