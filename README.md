@@ -15,7 +15,7 @@ import xarray as xr
 ## Usage
 If cloning this repository you need to change the path from
 ```python
-    path = '/cluster/home/krisomos/example/'  
+$[~/PROJECT_ROOT] python src/example.py 
 ```
 in line 61 of the script "examplescript.py" to the path where you store the *.nc and *.csv files from this repository. 
 
