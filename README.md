@@ -13,8 +13,10 @@ import xarray as xr
 ```
 
 ## Usage
-It is expected that you run the code distributed in this project from the `project_root` folder (where you find this file): 
+It is expected that you run the code distributed in this project from the `project_root` folder (where you find this file). To have an exact copy of the relevant environment you need to install `poetry`. You can then run the `visualization.ipynb` or `examplescript.py`:
 ```python
+$[~/PROJECT_ROOT] poetry shell
+$[~/PROJECT_ROOT] jupyter notebook  
 $[~/PROJECT_ROOT] python src/example.py 
 ```
 
