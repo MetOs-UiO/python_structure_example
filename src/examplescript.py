@@ -15,7 +15,7 @@ DATA_FOLDER = "data"
 
 def icecore_info(project_root):
     #### ICE CORE = UPPER FREEMONT GLACIER ####
-    obs = pd.read_csv(f"{project_root}/{DATA_FOLDER}/Upper_freemont_glacier.csv")
+    obs = pd.read_csv(f'{project_root}/{DATA_FOLDER}/Upper_freemont_glacier.csv')
 
     iceyear = obs["Mid_Year"][::-1]
     icedata = obs["BC_ng/g"][::-1].to_numpy()
@@ -67,4 +67,3 @@ def make_concentration(project_root, icelat, icelon):
     conc = (depbc / prec) * (1e12 / 1e3)  # kg/kg --> ng/g
 
     return conc
-
