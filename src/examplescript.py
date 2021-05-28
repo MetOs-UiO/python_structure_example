@@ -1,21 +1,24 @@
-import pandas as pd
-import numpy as np
-import sys, os, glob
-import xarray as xr
+import glob
+import os
+import sys
 import warnings
+
+import numpy as np
+import pandas as pd
+import xarray as xr
 
 warnings.simplefilter("ignore")
 # needed for betzy
 os.environ["HDF5_USE_FILE_LOCKING"] = "FALSE"
 
-NEG_LON2_POS_LON = 360.0  # xarray is dumb and doesnt understand negative longitude values - exception function should be used in case of other ice cores
+NEG_LON2_POS_LON = 360.0  # xarray doesnt understand negative longitude values
 SECONDS_IN_YEAR = 365.0 * 24.0 * 60.0 * 60.0
 DATA_FOLDER = "data"
 
 
 def icecore_info(project_root):
-    #### ICE CORE = UPPER FREEMONT GLACIER ####
-    obs = pd.read_csv(f'{project_root}/{DATA_FOLDER}/Upper_freemont_glacier.csv')
+    # ICE CORE = UPPER FREEMONT GLACIER
+    obs = pd.read_csv(f"{project_root}/{DATA_FOLDER}/Upper_freemont_glacier.csv")
 
     iceyear = obs["Mid_Year"][::-1]
     icedata = obs["BC_ng/g"][::-1].to_numpy()
